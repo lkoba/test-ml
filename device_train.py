@@ -297,6 +297,8 @@ if __name__ == "__main__":
         S_noise_avg = None
 
         while True:
+            print(f"processing step {step} ...")
+
             if (step % ckpt_every == 1) or step == total_steps:
                 print(f"saving a checkpoint for step {step}")
                 save(network, step, bucket, model_dir,
@@ -324,9 +326,11 @@ if __name__ == "__main__":
                 exit()
 
             start = time.time()
+            print(f"starting training of step {step} ...")
             loss, last_loss, grad_norm, grad_norm_micro = train_step(
                 network, train_dataset.get_samples()
             )
+            print(f"training step {step} done in {time.time() - start:.06}s")
             step += 1
 
             steps_per_sec = 1 / (time.time() - start)
