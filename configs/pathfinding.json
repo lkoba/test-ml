@@ -12,12 +12,12 @@
   "per_replica_batch": 1,
   "gradient_accumulation_steps": 16,
 
-  "warmup_steps": 1,
-  "anneal_steps": 1,
+  "warmup_steps": 200,
+  "anneal_steps": 1544,
   "lr": 5e-5,
   "end_lr": 1e-5,
   "weight_decay": 0.1,
-  "total_steps": 2,
+  "total_steps": 1744,
 
   "tpu_size": 8,
 
@@ -39,8 +39,8 @@
     "pubmedqa"
   ],
 
-  "val_batches": 3,
-  "val_every": 500,
+  "val_batches": 27900,
+  "val_every": 2000,
   "ckpt_every": 500,
   "keep_every": 10000,
 
