@@ -66,17 +66,20 @@ if __name__ == "__main__":
         network = CausalTransformer(params)
 
         start = time.time()
+        print(f"loading network ...")
         network.state = read_ckpt(network.state, f"gs://{bucket}/{model_dir}/step_{ckpt_step}/", devices.shape[1])
         print(f"network loaded in {time.time() - start:.06}s")
 
         start = time.time()
         del network.state["opt_state"]
 
+        print(f"converting network ...")
         network.state["params"] = convert_fn(network.state["params"])
         print(f"network converted in {time.time() - start:.06}s")
 
         suffix = "_slim_f16" if args.f16 else "_slim"
 
         for i in range(cores_per_replica):
+            print(f"writing shard ...")
             write_ckpt(network.state, f"gs://{bucket}/{model_dir}{suffix}/step_{ckpt_step}/", i)
             print(f"written shard {i}")
