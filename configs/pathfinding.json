@@ -10,14 +10,14 @@
   "seq": 2048,
   "cores_per_replica": 8,
   "per_replica_batch": 1,
-  "gradient_accumulation_steps": 16,
+  "gradient_accumulation_steps": 14,
 
-  "warmup_steps": 3,
-  "anneal_steps": 27,
+  "warmup_steps": 1,
+  "anneal_steps": 13,
   "lr": 5e-5,
   "end_lr": 1e-5,
   "weight_decay": 0.1,
-  "total_steps": 30,
+  "total_steps": 14,
 
   "tpu_size": 8,
 
@@ -36,7 +36,7 @@
     "pubmedqa"
   ],
 
-  "val_batches": 403,
+  "val_batches": 14,
   "val_every": 2000,
   "ckpt_every": 10000,
   "keep_every": 10000,
